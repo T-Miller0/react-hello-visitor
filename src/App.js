@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
     state = {
       visitorName: ""
     };
@@ -12,13 +10,22 @@ class App extends Component {
       this.setState({ visitorName: name})
     };
 
-    clearText = ( => {
+    clearText = () => {
       this.setState({visitorName: ""})
-    });
-    
+    };
+
+    render() {
     return (
+      <div>
+      <VisitorName visitorName={this.state.visitorName}
+        updateVisitorName={this.updateVisitorName} />
+      <button type='button' onClick={this.clearText}>Clear</button>
+      <br/>
+      <p>Hello, {this.state.visitorName || 'visitor'}</p>
+      </div>
     );
   }
 }
 
+// ReactDOM.render(<App/>.document.getElementById('app'));
 export default App;
